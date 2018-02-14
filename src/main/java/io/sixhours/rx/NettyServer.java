@@ -40,6 +40,7 @@ public class NettyServer {
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new HttpInitializer())
                     .bind(this.port)
                     .sync()
                     .channel()
