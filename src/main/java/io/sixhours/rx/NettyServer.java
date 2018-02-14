@@ -8,6 +8,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
+/**
+ * Netty server.
+ */
 public class NettyServer {
 
     private int port;
@@ -22,6 +25,11 @@ public class NettyServer {
         new NettyServer(port).run();
     }
 
+    /**
+     * Runs netty server.
+     *
+     * @throws Exception the exception
+     */
     public void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
