@@ -7,6 +7,9 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
 
 
+/**
+ * Channel initializer for configuring channel pipeline with handlers.
+ */
 class HttpInitializer extends ChannelInitializer<SocketChannel> {
 
 
