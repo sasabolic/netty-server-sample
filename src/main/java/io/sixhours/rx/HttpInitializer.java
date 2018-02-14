@@ -5,6 +5,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
+import io.netty.handler.stream.ChunkedWriteHandler;
 
 
 /**
@@ -18,6 +19,7 @@ class HttpInitializer extends ChannelInitializer<SocketChannel> {
         ch.pipeline()
                 .addLast(new HttpServerCodec())
                 .addLast(new HttpServerExpectContinueHandler())
-                .addLast(new HttpObjectAggregator(1_024 * 100));
+                .addLast(new HttpObjectAggregator(1_024 * 100))
+                .addLast( new HttpHandler());
     }
 }
