@@ -10,10 +10,9 @@ public class ActionTest {
 
     @Test
     public void givenSignatureAndValueMapWhenInvokeThenReturnResult() {
-        Action action = new Action("io.sixhours.rx.UserResource.get(java.lang.String id)",
-                Map.of("id", "123"), null);
+        Action action = new Action("io.sixhours.rx.UserResource.get(java.lang.String id)");
 
-        final Response response = action.invoke();
+        final Response response = action.invoke(Map.of("id", "123"), null);
 
         assertThat(response).isNotNull();
         assertThat(response).hasFieldOrPropertyWithValue("statusCode", 200);
@@ -26,10 +25,9 @@ public class ActionTest {
 
     @Test
     public void givenSignatureSaveAndValueMapWhenInvokeThenReturnResult() {
-        Action action = new Action("io.sixhours.rx.UserResource.save(java.lang.String data)",
-                Map.of("data", "123"), null);
+        Action action = new Action("io.sixhours.rx.UserResource.save(java.lang.String data)");
 
-        final Response response = action.invoke();
+        final Response response = action.invoke(Map.of("data", "123"), null);
 
         assertThat(response).isNotNull();
         assertThat(response).hasFieldOrPropertyWithValue("statusCode", 201);

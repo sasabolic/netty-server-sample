@@ -24,7 +24,9 @@ public class Route {
     public Response process(FullHttpRequest request) {
         System.out.println("BODY: " + request.content().toString(UTF_8));
         System.out.println("REQUEST: " + this.uriTemplate.match(request.uri()));
-        return new Action(this.signature, this.uriTemplate.match(request.uri()), request.content().toString(UTF_8)).invoke();
+
+        return ActionFactory.getBySignature(this.signature)
+                .invoke(this.uriTemplate.match(request.uri()), request.content().toString(UTF_8));
     }
 
 }

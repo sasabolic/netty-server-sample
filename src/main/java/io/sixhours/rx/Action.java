@@ -2,10 +2,7 @@ package io.sixhours.rx;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Action that invokes resource method based on given method signature and parameter values.
@@ -14,30 +11,17 @@ public class Action {
 
     private final String clazz;
     private final String methodName;
-    private final List<Parameter> parameters = new ArrayList<>();
+    private final Map<String, String> arguments;
 
     /**
      * Instantiates a new {@code Action}.
      *
      * @param signature   the method signature
-     * @param paramValues the method parameter values
-     * @param body        the body
      */
-    public Action(String signature, Map<String, String> paramValues, String body) {
-
+    public Action(String signature) {
         this.clazz = MethodSignatureUtil.className(signature);
         this.methodName = MethodSignatureUtil.methodName(signature);
-
-        MethodSignatureUtil.arguments(signature).forEach((paramName, paramType) -> {
-            try {
-                final String value = (body != null && paramValues.get(paramName) == null) ? body : paramValues.get(paramName);
-
-                this.parameters.add(new Parameter(Class.forName(paramType), value));
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
-
+        this.arguments = MethodSignatureUtil.arguments(signature);
 
     }
 
@@ -46,8 +30,10 @@ public class Action {
      *
      * @return the response
      */
-    public Response invoke() {
+    public Response invoke(Map<String, String> paramValues, String body) {
         try {
+            final List<Parameter> parameters = toParameters(paramValues, body);
+
             final Class<?>[] classes = parameters.stream().map(Parameter::getType).toArray(size -> new Class<?>[size]);
             final Object[] values = parameters.stream().map(Parameter::getValue).toArray(size -> new Object[size]);
 
@@ -68,6 +54,21 @@ public class Action {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private List<Parameter> toParameters(Map<String, String> paramValues, String body) {
+        final List<Parameter> parameters = new ArrayList<>();
+        this.arguments.forEach((paramName, paramType) -> {
+            try {
+                final String value = (body != null && paramValues.get(paramName) == null) ? body : paramValues.get(paramName);
+
+                parameters.add(new Parameter(Class.forName(paramType), value));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+        return parameters;
     }
 
 }
