@@ -14,7 +14,6 @@ public class Route {
         this.httpMethod = httpMethod;
         this.uriTemplate = new UriTemplate(uriTemplate);
         this.signature = signature;
-
     }
 
     public boolean matches(FullHttpRequest request) {
@@ -22,9 +21,6 @@ public class Route {
     }
 
     public Response process(FullHttpRequest request) {
-        System.out.println("BODY: " + request.content().toString(UTF_8));
-        System.out.println("REQUEST: " + this.uriTemplate.match(request.uri()));
-
         return ActionFactory.getBySignature(this.signature)
                 .invoke(this.uriTemplate.match(request.uri()), request.content().toString(UTF_8));
     }
