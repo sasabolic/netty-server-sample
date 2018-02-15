@@ -22,7 +22,6 @@ public class Action {
         this.clazz = MethodSignatureUtil.className(signature);
         this.methodName = MethodSignatureUtil.methodName(signature);
         this.arguments = MethodSignatureUtil.arguments(signature);
-
     }
 
     /**
