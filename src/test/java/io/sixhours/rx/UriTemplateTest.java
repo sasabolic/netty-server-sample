@@ -1,5 +1,6 @@
 package io.sixhours.rx;
 
+import io.sixhours.rx.server.UriTemplate;
 import org.junit.Test;
 
 import java.util.Map;

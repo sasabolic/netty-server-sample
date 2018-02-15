@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 
 import java.util.*;

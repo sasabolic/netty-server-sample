@@ -1,5 +1,6 @@
-package io.sixhours.rx;
+package io.sixhours.rx.app;
 
+import io.sixhours.rx.server.Response;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
@@ -15,9 +16,7 @@ public class UserResource {
 
         return new Response.Builder()
                 .body(body.getBytes(Charset.forName("UTF-8")))
-                .headers(
-                        Map.of("Content-Type", "application/json; charset=utf-8")
-                )
+                .header("Content-Type", "application/json; charset=utf-8")
                 .build();
     }
 
@@ -25,9 +24,7 @@ public class UserResource {
         System.out.println("SAVING DATA: " + data);
         return new Response.Builder()
                 .statusCode(201)
-                .headers(
-                        Map.of("Location", "/123")
-                )
+                .header("Location", "/123")
                 .build();
     }
 

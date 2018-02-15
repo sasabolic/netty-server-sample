@@ -1,5 +1,7 @@
 package io.sixhours.rx;
 
+import io.sixhours.rx.server.Action;
+import io.sixhours.rx.server.Response;
 import org.junit.Test;
 
 import java.util.Map;
@@ -10,7 +12,7 @@ public class ActionTest {
 
     @Test
     public void givenSignatureAndValueMapWhenInvokeThenReturnResult() {
-        Action action = new Action("io.sixhours.rx.UserResource.get(java.lang.String id)");
+        Action action = new Action("io.sixhours.rx.app.UserResource.get(java.lang.String id)");
 
         final Response response = action.invoke(Map.of("id", "123"), null);
 
@@ -25,7 +27,7 @@ public class ActionTest {
 
     @Test
     public void givenSignatureSaveAndValueMapWhenInvokeThenReturnResult() {
-        Action action = new Action("io.sixhours.rx.UserResource.save(java.lang.String data)");
+        Action action = new Action("io.sixhours.rx.app.UserResource.save(java.lang.String data)");
 
         final Response response = action.invoke(Map.of("data", "123"), null);
 

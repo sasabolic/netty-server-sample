@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

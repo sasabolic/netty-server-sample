@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 /**
  * Value object of the parameter containing parameter type and parameter value.

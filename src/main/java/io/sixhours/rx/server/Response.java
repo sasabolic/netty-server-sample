@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,20 +28,20 @@ public class Response {
 
     public static class Builder {
         private Integer statusCode;
-        private Map<String, String> headers;
+        private Map<String, String> headers = new HashMap<>();
         private byte[] body;
 
-        Builder statusCode(int statusCode) {
+        public Builder statusCode(int statusCode) {
             this.statusCode = statusCode;
             return this;
         }
 
-        Builder headers(Map<String, String> headers) {
-            this.headers = headers;
+        public Builder header(String name, String value) {
+            this.headers.put(name, value);
             return this;
         }
 
-        Builder body(byte[] body) {
+        public Builder body(byte[] body) {
             this.body = body;
             return this;
         }
@@ -49,9 +49,6 @@ public class Response {
         public Response build() {
             if (statusCode == null) {
                 statusCode = 200;
-            }
-            if (headers != null) {
-                headers = new HashMap<>();
             }
             if (body != null) {
                 headers.put("Content-Length", String.valueOf(body.length));

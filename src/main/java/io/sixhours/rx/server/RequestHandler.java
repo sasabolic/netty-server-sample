@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -11,9 +11,9 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class RequestHandler {
 
     private List<Route> routes = List.of(
-            new Route("GET", "/users/{id}", "io.sixhours.rx.UserResource.get(java.lang.String id)"),
-            new Route("POST", "/users", "io.sixhours.rx.UserResource.save(java.lang.String data)"),
-            new Route("PUT", "/users/{id}", "io.sixhours.rx.UserResource.update(java.lang.String id, java.lang.String data)")
+            new Route("GET", "/users/{id}", "io.sixhours.rx.app.UserResource.get(java.lang.String id)"),
+            new Route("POST", "/users", "io.sixhours.rx.app.UserResource.save(java.lang.String data)"),
+            new Route("PUT", "/users/{id}", "io.sixhours.rx.app.UserResource.update(java.lang.String id, java.lang.String data)")
     );
 
     public Response handle(ChannelHandlerContext ctx, Object msg) {

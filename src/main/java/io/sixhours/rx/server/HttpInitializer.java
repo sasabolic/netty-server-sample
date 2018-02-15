@@ -1,11 +1,10 @@
-package io.sixhours.rx;
+package io.sixhours.rx.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
-import io.netty.handler.stream.ChunkedWriteHandler;
 
 
 /**
