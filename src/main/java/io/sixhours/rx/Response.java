@@ -1,5 +1,6 @@
 package io.sixhours.rx;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Response {
@@ -8,7 +9,7 @@ public class Response {
     private byte[] body;
 
     private Response(Integer statusCode, Map<String, String> headers, byte[] body) {
-        this.statusCode = statusCode != null ? statusCode : 200;
+        this.statusCode = statusCode;
         this.headers = headers;
         this.body = body;
     }
@@ -46,6 +47,17 @@ public class Response {
         }
 
         public Response build() {
+            if (statusCode == null) {
+                statusCode = 200;
+            }
+            if (headers != null) {
+                headers = new HashMap<>();
+            }
+            if (body != null) {
+                headers.put("Content-Length", String.valueOf(body.length));
+            } else {
+                headers.put("Content-Length", "0");
+            }
             return new Response(statusCode, headers, body);
         }
     }

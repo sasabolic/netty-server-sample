@@ -2,9 +2,8 @@ package io.sixhours.rx;
 
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.Map;
-
-import static io.netty.util.CharsetUtil.UTF_8;
 
 public class UserResource {
 
@@ -15,9 +14,9 @@ public class UserResource {
                 .put("email", "sasa.bolic@sixhours.io").toString();
 
         return new Response.Builder()
-                .body(body.getBytes(UTF_8))
+                .body(body.getBytes(Charset.forName("UTF-8")))
                 .headers(
-                        Map.of("Content-Type", "application/json; charset=utf-8", "Content-Length", String.valueOf(body.length()))
+                        Map.of("Content-Type", "application/json; charset=utf-8")
                 )
                 .build();
     }
@@ -27,7 +26,7 @@ public class UserResource {
         return new Response.Builder()
                 .statusCode(201)
                 .headers(
-                        Map.of("Location", "/123", "Content-Length", "0")
+                        Map.of("Location", "/123")
                 )
                 .build();
     }
@@ -36,9 +35,6 @@ public class UserResource {
         System.out.println("UPDATING DATA: " + data);
         return new Response.Builder()
                 .statusCode(204)
-                .headers(
-                        Map.of("Content-length", "0")
-                )
                 .build();
     }
 }
