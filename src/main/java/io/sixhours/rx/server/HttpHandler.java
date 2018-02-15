@@ -29,8 +29,6 @@ class HttpHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof FullHttpRequest) {
             FullHttpRequest request = (FullHttpRequest) msg;
 
-            System.out.println("REQUEST: " + ((HttpRequest) msg).decoderResult().toString());
-
             final Response res = handler.handle(ctx, msg);
 
             final FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, HttpResponseStatus.valueOf(res.getStatusCode()), res.getBody() != null ? Unpooled.wrappedBuffer(res.getBody()) : Unpooled.buffer(0));
