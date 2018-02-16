@@ -15,7 +15,7 @@ public class RequestHandler {
     private RequestHandler() {
 
     }
-    
+
     /**
      * Handles request and returns response.
      *
