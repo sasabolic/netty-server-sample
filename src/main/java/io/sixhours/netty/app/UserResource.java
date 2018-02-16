@@ -1,6 +1,6 @@
-package io.sixhours.rx.app;
+package io.sixhours.netty.app;
 
-import io.sixhours.rx.server.Response;
+import io.sixhours.netty.server.Response;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package io.sixhours.rx.server;
+package io.sixhours.netty.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;

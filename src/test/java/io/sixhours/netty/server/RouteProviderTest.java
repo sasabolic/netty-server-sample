@@ -1,7 +1,5 @@
-package io.sixhours.rx;
+package io.sixhours.netty.server;
 
-import io.sixhours.rx.server.Route;
-import io.sixhours.rx.server.RouteProvider;
 import org.junit.Test;
 
 import java.util.List;

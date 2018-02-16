@@ -1,4 +1,4 @@
-package io.sixhours.rx.server;
+package io.sixhours.netty.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;

@@ -1,4 +1,4 @@
-package io.sixhours.rx.server;
+package io.sixhours.netty.server;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

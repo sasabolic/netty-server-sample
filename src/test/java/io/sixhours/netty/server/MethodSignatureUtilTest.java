@@ -1,6 +1,5 @@
-package io.sixhours.rx;
+package io.sixhours.netty.server;
 
-import io.sixhours.rx.server.MethodSignatureUtil;
 import org.junit.Test;
 
 import java.util.Map;

@@ -1,4 +1,4 @@
-package io.sixhours.rx;
+package io.sixhours.netty.server;
 
 import org.junit.Test;
 
