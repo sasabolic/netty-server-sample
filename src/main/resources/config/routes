@@ -1,0 +1,4 @@
+GET         /users/{id}                io.sixhours.rx.app.UserResource.get(java.lang.String id)
+POST        /users                     io.sixhours.rx.app.UserResource.save(java.lang.String data)
+PUT         /users/{id}                io.sixhours.rx.app.UserResource.update(java.lang.String id, java.lang.String data)
+DELETE      /users/{id}                io.sixhours.rx.app.UserResource.delete(java.lang.String id)
