@@ -1,1 +1,1 @@
-# rx-netty-sample
+# netty-server-sample
